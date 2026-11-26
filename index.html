@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detour Life - 發現生活的另一條路｜文章分享與網友討論社群</title>
-    <!-- 使用 Tailwind CSS 加快切版 -->
-    <script src="https://jsdelivr.net"></script>
+    <!-- 改用 Tailwind CSS 官方新版一體化獨立腳本（不依賴 jsdelivr） -->
+    <script src="https://unpkg.com"></script>
     <style>
         .modal {
             transition: opacity 0.25s ease;
@@ -84,13 +84,12 @@
         </section>
     </main>
 
-    <!-- 頁尾 Footer：包含隱私權政策入口，滿足審查要求 -->
+    <!-- 頁尾 Footer -->
     <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm py-8 mt-auto">
         <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <div>
                 &copy; 2026 Detour Life. All rights reserved.
             </div>
-            <!-- Google 審查員必看的條款超連結 -->
             <div class="flex space-x-6">
                 <button onclick="toggleModal('privacy-modal')" class="hover:text-white transition cursor-pointer">隱私權政策 (Privacy Policy)</button>
                 <button onclick="toggleModal('terms-modal')" class="hover:text-white transition cursor-pointer">服務條款 (Terms of Service)</button>
