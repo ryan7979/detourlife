@@ -4,29 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detour Life - 發現生活的另一條路｜文章分享與網友討論社群</title>
-    <!-- 改用 Tailwind CSS 官方新版一體化獨立腳本（不依賴 jsdelivr） -->
-    <script src="https://unpkg.com"></script>
-    <style>
-        .modal {
-            transition: opacity 0.25s ease;
-        }
-        body.modal-active {
-            overflow: hidden;
-        }
-    </style>
+    <!-- 引入同層級的純靜態本地 CSS 檔案 -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+<body>
 
-    <!-- 導覽列 Navigation -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <span class="text-2xl font-black tracking-wider text-indigo-600">Detour Life</span>
-            </div>
-            <nav class="flex items-center space-x-4">
-                <!-- 醒目的 Google 登入按鈕，滿足審查要求 -->
-                <button onclick="handleLogin()" class="flex items-center space-x-2 bg-white border border-slate-300 text-slate-700 px-4 py-2 rounded-lg font-medium hover:bg-slate-50 transition shadow-sm cursor-pointer">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24">
+    <header>
+        <div class="nav-container">
+            <div class="logo">Detour Life</div>
+            <nav>
+                <button onclick="handleLogin()" class="btn-google">
+                    <svg style="width:20px; height:20px;" viewBox="0 0 24 24">
                         <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v3.92h6.69c-.29 1.5-1.14 2.77-2.4 3.61v3h3.86c2.26-2.09 3.59-5.17 3.59-8.46z"/>
                         <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.21v3.11C3.18 21.88 7.31 24 12 24z"/>
                         <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.6H1.21C.44 8.14 0 9.89 0 11.7s.44 3.56 1.21 5.1l4.06-3.11z"/>
@@ -38,110 +26,109 @@
         </div>
     </header>
 
-    <!-- 主要內容 Hero Section & App Purpose -->
-    <main class="flex-grow">
-        <!-- 主視覺區：明確說明產品用途，這是 Google 審查的核心重點 -->
-        <section class="max-w-4xl mx-auto px-4 pt-16 pb-12 text-center">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                發現生活的另一條路，<br class="hidden sm:inline">
-                <span class="text-indigo-600">分享故事與靈感</span>
-            </h1>
-            <p class="mt-6 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+    <main>
+        <section class="hero">
+            <h1>發現生活的另一條路，<br><span>分享故事與靈感</span></h1>
+            <p>
                 Detour Life 是一個專為生活探索者打造的<strong>文章分享與網友討論社群平台</strong>。在這裡，你可以自由撰寫生活隨筆、分享閱讀心得，並與來自各地的網友展開深度對話與想法碰撞。
             </p>
-            <div class="mt-10">
-                <button onclick="handleLogin()" class="bg-indigo-600 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-indigo-700 transition shadow-lg shadow-indigo-100 text-lg cursor-pointer">
-                    加入社群開始討論
-                </button>
+            <div class="cta-group">
+                <button onclick="handleLogin()" class="btn-primary">加入社群開始討論</button>
             </div>
         </section>
 
-        <!-- 功能特點展示區：強化網站的真實性與合規性 -->
-        <section class="bg-white border-y border-slate-200 py-16">
-            <div class="max-w-6xl mx-auto px-4">
-                <h2 class="text-2xl font-bold text-center text-slate-900 mb-12">平台核心功能</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- 卡片 1 -->
-                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                        <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 font-bold text-xl mb-4">✍️</div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">深度文章分享</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">提供乾淨舒適的寫作面板，讓每位創作者都能輕鬆發布有溫度的生活觀察與原創文章。</p>
-                    </div>
-                    <!-- 卡片 2 -->
-                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                        <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 font-bold text-xl mb-4">💬</div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">網友即時討論</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">完善的留言與互動機制，隨時隨地與志同道合的網友針對感興趣的主題切磋交流。</p>
-                    </div>
-                    <!-- 卡片 3 -->
-                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                        <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 font-bold text-xl mb-4">🔒</div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-2">安全登入機制</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">整合 Google OAuth 驗證，僅讀取最基本個人資料，保障用戶帳號安全與資料隱私。</p>
-                    </div>
+        <section class="features-section">
+            <h2>平台核心功能</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">✍️</div>
+                    <h3>深度文章分享</h3>
+                    <p>提供乾淨舒適的寫作面板，讓每位創作者都能輕鬆發布有溫度的生活觀察與原創文章。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💬</div>
+                    <h3>網友即時討論</h3>
+                    <p>完善的留言與互動機制，隨時隨地與志同道合的網友針對感興趣的主題切磋交流。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔒</div>
+                    <h3>安全登入機制</h3>
+                    <p>整合 Google OAuth 驗證，僅讀取最基本個人資料，保障用戶帳號安全與資料隱私。</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 頁尾 Footer -->
-    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-sm py-8 mt-auto">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-            <div>
-                &copy; 2026 Detour Life. All rights reserved.
-            </div>
-            <div class="flex space-x-6">
-                <button onclick="toggleModal('privacy-modal')" class="hover:text-white transition cursor-pointer">隱私權政策 (Privacy Policy)</button>
-                <button onclick="toggleModal('terms-modal')" class="hover:text-white transition cursor-pointer">服務條款 (Terms of Service)</button>
+    <footer>
+        <div class="footer-container">
+            <div>&copy; 2026 Detour Life. All rights reserved.</div>
+            <div class="footer-links">
+                <button onclick="toggleModal('privacy-modal')">隱私權政策 (Privacy Policy)</button>
+                <button onclick="toggleModal('terms-modal')">服務條款 (Terms of Service)</button>
             </div>
         </div>
     </footer>
 
-    <!-- 隱私權政策彈出視窗 (Privacy Policy Modal) -->
-    <div id="privacy-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-        <div class="modal-overlay absolute w-full h-full bg-slate-900 opacity-50" onclick="toggleModal('privacy-modal')"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded-2xl shadow-2xl z-50 overflow-y-auto max-h-[80vh]">
-            <div class="modal-content py-6 text-left px-6">
-                <div class="flex justify-between items-center pb-4 border-b border-slate-200">
-                    <p class="text-2xl font-bold text-slate-900">隱私權政策 (Privacy Policy)</p>
-                    <button onclick="toggleModal('privacy-modal')" class="text-slate-400 hover:text-slate-600 text-2xl font-semibold cursor-pointer">&times;</button>
-                </div>
-                <div class="my-4 space-y-4 text-slate-600 leading-relaxed text-sm">
-                    <p>歡迎瀏覽 Detour Life（以下簡稱「本網站」）。我們非常重視您的個人隱私，並嚴格遵守 Google API 服務數據政策。本政策旨在說明我們如何收集、使用及保護您的個人資料。</p>
-                    <h4 class="font-bold text-slate-900">1. 資料收集與授權範疇</h4>
-                    <p>當您點擊「使用 Google 登入」時，本網站會在取得您的明確同意後，透過 Google OAuth 安全機制讀取以下基本資訊：</p>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li><strong>電子郵件地址 (Email)：</strong>用於建立、識別您的唯一會員帳戶，並作為未來的核心通訊管道。</li>
-                        <li><strong>公開個人檔案 (Profile)：</strong>包含您的顯示名稱（Name）與公開頭像，僅用於在本網站的文章分享與網友討論區中顯示您的使用者身份。</li>
-                    </ul>
-                    <h4 class="font-bold text-slate-900">2. 資料使用目的與第三方限制</h4>
-                    <p>我們所收集的資料<strong>僅用於本網站內的身分驗證與個人化功能提供</strong>（如：發表文章、追蹤討論回覆）。我們絕不會將您的 Google 個人數據出售、租借或分享給任何第三方機構，亦不將其用於任何形式的廣告投遞。所有數據傳輸皆在加密技術（HTTPS）的保護下進行。</p>
-                    <h4 class="font-bold text-slate-900">3. 帳號與數據刪除權利</h4>
-                    <p>用戶可隨時透過本網站設定頁面申請撤銷 Google 登入授權並刪除其在 Detour Life 的帳戶，一旦申請成功，我們將於 24 小時內完整抹除資料庫（Cloudflare D1）中與您相關的所有使用者紀錄與偏好設定。</p>
-                </div>
-                <div class="flex justify-end pt-4 border-t border-slate-200">
-                    <button onclick="toggleModal('privacy-modal')" class="bg-slate-100 text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-200 transition font-medium cursor-pointer">關閉</button>
-                </div>
+    <!-- 隱私權政策彈出視窗 -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-overlay" onclick="toggleModal('privacy-modal')"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <p>隱私權政策 (Privacy Policy)</p>
+                <button onclick="toggleModal('privacy-modal')" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>歡迎瀏覽 Detour Life（以下簡稱「本網站」）。我們非常重視您的個人隱私，並嚴格遵守 Google API 服務數據政策。本政策旨在說明我們如何收集、使用及保護您的個人資料。</p>
+                <h4>1. 資料收集與授權範疇</h4>
+                <p>當您點擊「使用 Google 登入」時，本網站會在取得您的明確同意後，透過 Google OAuth 安全機制讀取以下基本資訊：</p>
+                <ul>
+                    <li><strong>電子郵件地址 (Email)：</strong>用於建立、識別您的唯一會員帳戶，並作為未來的核心通訊管道。</li>
+                    <li><strong>公開個人檔案 (Profile)：</strong>包含您的顯示名稱（Name）與公開頭像，僅用於在本網站的文章分享與網友討論區中顯示您的使用者身份。</li>
+                </ul>
+                <h4>2. 資料使用目的與第三方限制</h4>
+                <p>我們所收集的資料<strong>僅用於本網站內的身分驗證與個人化功能提供</strong>（如：發表文章、追蹤討論回覆）。我們絕不會將您的 Google 個人數據出售、租借或分享給任何第三方機構，亦不將其用於任何形式的廣告投遞。所有數據傳輸皆在加密技術（HTTPS）的保護下進行。</p>
+                <h4>3. 帳號與數據刪除權利</h4>
+                <p>用戶可隨時透過本網站設定頁面申請撤銷 Google 登入授權並刪除其在 Detour Life 的帳戶，一旦申請成功，我們將於 24 小時內完整抹除資料庫（Cloudflare D1）中與您相關的所有使用者紀錄與偏好設定。</p>
+            </div>
+            <div class="modal-footer">
+                <button onclick="toggleModal('privacy-modal')" class="btn-close-modal">關閉</button>
             </div>
         </div>
     </div>
 
-    <!-- 服務條款彈出視窗 (Terms of Service Modal) -->
-    <div id="terms-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-        <div class="modal-overlay absolute w-full h-full bg-slate-900 opacity-50" onclick="toggleModal('terms-modal')"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded-2xl shadow-2xl z-50 overflow-y-auto max-h-[80vh]">
-            <div class="modal-content py-6 text-left px-6">
-                <div class="flex justify-between items-center pb-4 border-b border-slate-200">
-                    <p class="text-2xl font-bold text-slate-900">服務條款 (Terms of Service)</p>
-                    <button onclick="toggleModal('terms-modal')" class="text-slate-400 hover:text-slate-600 text-2xl font-semibold cursor-pointer">&times;</button>
-                </div>
-                <div class="my-4 space-y-4 text-slate-600 leading-relaxed text-sm">
-                    <p>感謝您使用 Detour Life！當您開始使用本網站服務時，即代表您已閱讀並同意接受本服務條款之所有內容。</p>
-                    <h4 class="font-bold text-slate-900">1. 用戶帳號與安全</h4>
-                    <p>本網站利用 Google 生態系進行第三方登入驗證。您有責任維護您 Google 帳號的安全。任何透過您帳號在平台發表的文章或言論，均視為您本人的行為。</p>
-                    <h4 class="font-bold text-slate-900">2. 社群行為準則與討論規範</h4>
-                    <p>Detour Life 為一個理性的文章分享與討論平台。用戶在發表文章或參與網友討論時，應遵守現行法律，嚴禁發布包含暴力、色情、人身攻擊、商業廣告或惡意垃圾訊息等內容。本網站保留刪除違規文章與限制用戶帳號之權利。</p>
-                    <h4 class="font-bold text-slate-900">3. 服務中斷與免責聲明</h4>
-                    <p>本網站基於 Cloudflare 雲端架構進行部署與維護，雖然我們努力確保平台的穩定性，但對於因不可抗力或技術故障導致的服務暫時中斷或數據遺失，本網站不承擔法律上的損害賠償責任。</p>
-                </div>
-                <div class="flex justify-end pt-4 border-t border-slate-200">
+    <!-- 服務條款彈出視窗 -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-overlay" onclick="toggleModal('terms-modal')"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <p>服務條款 (Terms of Service)</p>
+                <button onclick="toggleModal('terms-modal')" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>感謝您使用 Detour Life！當您開始使用本網站服務時，即代表您已閱讀並同意接受本服務條款之所有內容。</p>
+                <h4>1. 用戶帳號與安全</h4>
+                <p>本網站利用 Google 生態系進行第三方登入驗證。您有責任維護您 Google 帳號的安全。任何透過您帳號在平台發表的文章或言論，均視為您本人的行為。</p>
+                <h4>2. 社群行為準則與討論規範</h4>
+                <p>Detour Life 為一個理性的文章分享與討論平台。用戶在發表文章或參與網友討論時，應遵守現行法律，嚴禁發布包含暴力、色情、人身攻擊、商業廣告或惡意垃圾訊息等內容。本網站保留刪除違規文章與限制用戶帳號之權利。</p>
+                <h4>3. 服務中斷與免責聲明</h4>
+                <p>本網站基於 Cloudflare 雲端架構進行部署與維護，雖然我們努力確保平台的穩定性，但對於因不可抗力或技術故障導致的服務暫時中斷或數據遺失，本網站不承擔法律上的損害賠償責任。</p>
+            </div>
+            <div class="modal-footer">
+                <button onclick="toggleModal('terms-modal')" class="btn-close-modal">關閉</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleModal(modalId) {
+            const body = document.querySelector('body');
+            const modal = document.getElementById(modalId);
+            modal.classList.toggle('active');
+            body.classList.toggle('modal-active');
+        }
+        function handleLogin() {
+            window.location.href = '/api/auth/google';
+        }
+    </script>
+</body>
+</html>
